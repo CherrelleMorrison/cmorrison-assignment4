@@ -3,77 +3,82 @@ const Page = require('./page');
 
 class ShipmentPage extends Page {
 
-get shippingFirstName () {
-    return $('input[name="firstname"]');
-}
 
-get shippingLastName () {
-    return $('input[name="lastname"]');
-}
+    get shippingFirstName() {
+        return $('input[name="firstname"]');
+    }
 
-get streetAddress1 () {
-    return $('input[name="street[0]"]');
-}
+    get shippingLastName() {
+        return $('input[name="lastname"]');
+    }
 
-get streetAddress2 () {
-    return $('input[name="street[1]"]');
-}
+    get streetAddress1() {
+        return $('input[name="street[0]"]');
+    }
 
-get streetAddress3 () {
-    return $('input[name="street[2]"]');
-}
+    get streetAddress2() {
+        return $('input[name="street[1]"]');
+    }
 
-get addressCity () {
-    return $('input[name="city"]');
-}
+    get streetAddress3() {
+        return $('input[name="street[2]"]');
+    }
 
-get addressState () {
-    return $('select[name="region_id"]');
-}
+    get addressCity() {
+        return $('input[name="city"]');
+    }
 
-get addressPostal () {
-    return $('input[name="postcode"]');
-}
+    get addressState() {
+        return $('select[name="region_id"]');
+    }
 
-get addressCountry () {
-    return $('select[name="country_id"]');
-}
+    get addressPostal() {
+        return $('input[name="postcode"]');
+    }
 
-get inputTelephone () {
-    return $('input[name="telephone"]');
-}
+    get addressCountry() {
+        return $('select[name="country_id"]');
+    }
 
-get flatRateRadioBtn () {
-    return $('input[value="flatrate_flatrate"]');
-}
+    get inputTelephone() {
+        return $('input[name="telephone"]');
+    }
 
-get bestRateRadioBtn () {
-    return $('input[value="tablerate_bestway"]');
-}
+    get flatRateRadioBtn() {
+        return $('input[value="flatrate_flatrate"]');
+    }
 
-get checkoutNextBtn () {
-    return $('.button.action.continue.primary');
-}
+    get bestRateRadioBtn() {
+        return $('input[value="tablerate_bestway"]');
+    }
 
+    get checkoutNextBtn() {
+        return $('.button.action.continue.primary');
+    }
 
-async checkout (shipFname, shipLname, address1, address2, address3, city, state, zipcode, country, phone) 
-{
-    await this.shippingFirstName.setValue(shipFname);
-    await this.shippingLastName.setValue(shipLname);
-    await this.streetAddress1.setValue(address1);
-    await this.streetAddress2.setValue(address2);
-    await this.streetAddress3.setValue(address3);
-    await this.addressCity.setValue(city);
-    await this.addressState.selectByAttribute("value",state);
-    await this.addressPostal.setValue(zipcode);
-    await this.addressCountry.selectByAttribute("value", country);
-    await this.inputTelephone.setValue(phone);
-  
-}
+    get addNewShipBtn() {
+        return $('.action.action-show-popup');
+    }
+    get btnShipHere() {
+        return $('.action.primary.action-save-address');
+    }
 
-open () {
-    return super.open('checkout/#shipping');
-}
+    async checkout(shipFname, shipLname, address1, address2, address3, city, state, zipcode, country, phone) {
+        await this.shippingFirstName.setValue(shipFname);
+        await this.shippingLastName.setValue(shipLname);
+        await this.streetAddress1.setValue(address1);
+        await this.streetAddress2.setValue(address2);
+        await this.streetAddress3.setValue(address3);
+        await this.addressCity.setValue(city);
+        await this.addressState.selectByAttribute("value", state);
+        await this.addressPostal.setValue(zipcode);
+        await this.addressCountry.selectByAttribute("value", country);
+        await this.inputTelephone.setValue(phone);
+    }
+
+    open() {
+        return super.open('checkout/#shipping');
+    }
 
 }
 
